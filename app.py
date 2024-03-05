@@ -24,7 +24,8 @@ def preprocess_image(image):
     # Define a transformation for image preprocessing
     transform = transforms.Compose([
     transforms.Resize((224, 224)),  # Resize the image to (224, 224)
-    transforms.ToTensor(),           # Convert the image to a PyTorch tensor
+    transforms.ToTensor(), 
+    transforms.Normalize(# Convert the image to a PyTorch tensor
         mean=[0.485, 0.456, 0.406],  # Normalize the image with mean and standard deviation
         std=[0.229, 0.224, 0.225]
     )
