@@ -6,7 +6,12 @@ import numpy as np
 from torchvision import transforms
 from PIL import Image
 
-
+def display_labels(labels):
+    st.subheader("Plant Leaf Images predictable: ")
+    st.write(f"Number of classes: {len(labels)}")
+    for label in labels:
+        st.write(f"- {label}")
+        
 # Define a function to load your trained model and weights
 def load_model():
     model = torch.hub.load('pytorch/vision:v0.13.0', 'resnet50', pretrained=False)
@@ -23,7 +28,7 @@ def load_model():
 #                 nn.Dropout(p=0.3),
                 nn.Linear(128, 50)
                 )
-    model.load_state_dict(torch.load("weights1.h5", map_location=device))
+    model.load_state_dict(torch.load("weights (1).h5", map_location=device))
     # Freeze the model weights (optional)
     for param in model.parameters():
         param.requires_grad = False
@@ -56,7 +61,7 @@ def predict_class(model, image, threshold):
     preprocessed_image = preprocess_image(image)
     
     class_labels = []
-    with open("pred_class/dataset_classes.txt", "r") as f:
+    with open("pred_class\dataset_classes.txt", "r") as f:
         class_labels = f.readlines()    
     # Make predictions
     probabilities = model(preprocessed_image).softmax(dim=1)  # Assuming model outputs probabilities
@@ -71,9 +76,16 @@ def predict_class(model, image, threshold):
 
 st.title("Medicinal Leaf Classification App")
 
+class_labels = []
+with open("pred_class\dataset_classes.txt", "r") as f:
+        class_labels = f.readlines()
+    
+display_labels(class_labels)
+
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
+    
     image = cv2.imdecode(np.frombuffer(uploaded_file.read(), np.uint8), cv2.IMREAD_COLOR)
     st.image(image, channels="BGR")
     
@@ -91,7 +103,7 @@ if uploaded_file is not None:
         
         # Download predicted class labels from a separate file (replace with your actual file)
         class_labels = []
-        with open("pred_class/dataset_classes.txt", "r") as f:
+        with open("pred_class\dataset_classes.txt", "r") as f:
             class_labels = f.readlines()
 
         predicted_label = prediction
