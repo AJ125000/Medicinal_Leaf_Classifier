@@ -56,7 +56,7 @@ def predict_class(model, image, threshold):
     preprocessed_image = preprocess_image(image)
     
     class_labels = []
-    with open("pred_class\dataset_classes.txt", "r") as f:
+    with open("pred_class/dataset_classes.txt", "r") as f:
         class_labels = f.readlines()    
     # Make predictions
     probabilities = model(preprocessed_image).softmax(dim=1)  # Assuming model outputs probabilities
