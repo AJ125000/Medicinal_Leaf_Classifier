@@ -23,7 +23,7 @@ def load_model():
 #                 nn.Dropout(p=0.3),
                 nn.Linear(128, 50)
                 )
-    model.load_state_dict(torch.load("weights1.h5", map_location=device))
+    model.load_state_dict(torch.load("weights (1).h5", map_location=device))
     # Freeze the model weights (optional)
     for param in model.parameters():
         param.requires_grad = False
@@ -51,15 +51,23 @@ def preprocess_image(image):
     return preprocessed_image.unsqueeze(0)  # Add batch dimension
 
 # Predict the class using the model
-def predict_class(model, image):
+def predict_class(model, image, threshold):
     # Preprocess the image
     preprocessed_image = preprocess_image(image)
     
+    class_labels = []
+    with open("pred_class\dataset_classes.txt", "r") as f:
+        class_labels = f.readlines()    
     # Make predictions
-    with torch.no_grad():
-        outputs = model(preprocessed_image)
-    _, predicted = torch.max(outputs.data, 1)
-    return predicted.item()
+    probabilities = model(preprocessed_image).softmax(dim=1)  # Assuming model outputs probabilities
+    prediction = torch.argmax(probabilities, dim=1).item()  # Get the predicted class index
+    predicted_label = class_labels[prediction]
+
+    # Check if probability is below the threshold
+    if probabilities[0][prediction] < threshold:  # Accessing the probability for the predicted class
+        predicted_label = "undetermined"
+
+    return predicted_label
 
 st.title("Medicinal Leaf Classification App")
 
@@ -77,13 +85,16 @@ if uploaded_file is not None:
 
     if st.button("Predict"):
         # Make predictions
-        prediction = predict_class(st.session_state["model"], image)
+        
+        threshold = 0.7
+        prediction = predict_class(st.session_state["model"], image, threshold)
         
         # Download predicted class labels from a separate file (replace with your actual file)
         class_labels = []
-        with open("pred_class/dataset_classes.txt", "r") as f:
+        with open("pred_class\dataset_classes.txt", "r") as f:
             class_labels = f.readlines()
-        predicted_label = class_labels[prediction].strip()
+
+        predicted_label = prediction
         
         st.write(f"Predicted Class: {predicted_label}")
 
