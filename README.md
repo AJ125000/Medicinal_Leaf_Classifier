@@ -2,55 +2,6 @@
 
 This is an app that classifies a given image into a plant leaf among the following classes:
 
-Asthma Plant
-Avaram
-Balloon vine
-Bellyache bush (Green)
-Benghal dayflower
-Big Caltrops
-Black-Honey Shrub
-Bristly Wild Grape
-Butterfly Pea
-Cape Gooseberry
-Common Wireweed
-Country Mallow
-Crown flower
-Green Chireta
-Holy Basil
-Indian CopperLeaf
-Indian Jujube
-Indian Sarsaparilla
-Indian Stinging Nettle
-Indian Thornapple
-Indian wormwood
-Ivy Gourd
-Kokilaksha
-Land Caltrops (Bindii)
-Madagascar Periwinkle
-Madras Pea Pumpkin
-Malabar Catmint
-Mexican Mint
-Mexican Prickly Poppy
-Mountain Knotgrass
-Nalta Jute
-Night blooming Cereus
-Panicled Foldwing
-Prickly Chaff Flower
-Punarnava
-Purple Fruited Pea Eggplant
-Purple Tephrosia
-Rosary Pea
-Shaggy button weed
-Small Water Clover
-Spiderwisp
-Square Stalked Vine
-Stinking Passionflower
-Sweet Basil
-Sweet flag
-Tinnevelly Senna
-Trellis Vine
-Velvet bean
-coatbuttons
-heart-leaved moonseed
+['Asthma Plant.zip', 'Avaram.zip', 'Balloon vine.zip', 'Bellyache bush (Green).zip', 'Benghal dayflower.zip', 'Big Caltrops.zip', 'Black-Honey Shrub.zip', 'Bristly Wild Grape.zip', 'Butterfly Pea.zip', 'Cape Gooseberry.zip', 'Common Wireweed.zip', 'Country Mallow.zip', 'Crown flower.zip', 'Green Chireta.zip', 'Holy Basil.zip', 'Indian CopperLeaf.zip', 'Indian Jujube.zip', 'Indian Sarsaparilla.zip', 'Indian Stinging Nettle.zip', 'Indian Thornapple.zip', 'Indian wormwood.zip', 'Ivy Gourd.zip', 'Kokilaksha.zip', 'Land Caltrops (Bindii).zip', 'Madagascar Periwinkle.zip', 'Madras Pea Pumpkin.zip', 'Malabar Catmint.zip', 'Mexican Mint.zip', 'Mexican Prickly Poppy.zip', 'Mountain Knotgrass.zip', 'Nalta Jute.zip', 'Night blooming Cereus.zip', 'Panicled Foldwing.zip', 'Prickly Chaff Flower.zip', 'Punarnava.zip', 'Purple Fruited Pea Eggplant.zip', 'Purple Tephrosia.zip', 'Rosary Pea.zip', 'Shaggy button weed.zip', 'Small Water Clover.zip', 'Spiderwisp.zip', 'Square Stalked Vine.zip', 'Stinking Passionflower.zip', 'Sweet Basil.zip', 'Sweet flag.zip', 'Tinnevelly Senna.zip', 'Trellis Vine.zip', 'Velvet bean.zip', 'coatbuttons.zip', 'heart-leaved moonseed.zip']
 
 Just upload an image into the app, it will classify it as one among the above classes.
