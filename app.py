@@ -1,9 +1,10 @@
 import streamlit as st
 import torch
+import torch.nn as nn
 import cv2
 import numpy as np
 from torchvision import transforms
-
+from PIL import Image
 
 
 # Define a function to load your trained model and weights
@@ -11,6 +12,17 @@ def load_model():
     model = torch.hub.load('pytorch/vision:v0.13.0', 'resnet50', pretrained=False)
     # Load your trained model weights here (replace with your path and filename)
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    model.fc = nn.Sequential(
+                nn.Linear(2048, 128),
+                nn.LayerNorm(128),
+                nn.ReLU(inplace=True),
+                nn.Dropout(p=0.2),
+#                 nn.Linear(512, 256),
+#                 nn.LayerNorm(256),
+#                 nn.ReLU(inplace=True),
+#                 nn.Dropout(p=0.3),
+                nn.Linear(128, 50)
+                )
     model.load_state_dict(torch.load("weights (1).h5", map_location=device))
     # Freeze the model weights (optional)
     for param in model.parameters():
@@ -21,6 +33,9 @@ def load_model():
 # Preprocess the image for ResNet-50
 def preprocess_image(image):
     
+    # Assuming image is a NumPy array
+    if isinstance(image, np.ndarray):
+        image = Image.fromarray(image)  # Convert to PIL Image
     # Define a transformation for image preprocessing
     transform = transforms.Compose([
     transforms.Resize((224, 224)),  # Resize the image to (224, 224)
@@ -66,7 +81,7 @@ if uploaded_file is not None:
         
         # Download predicted class labels from a separate file (replace with your actual file)
         class_labels = []
-        with open("dataset_classes.txt", "r") as f:
+        with open("pred_class\dataset_classes.txt", "r") as f:
             class_labels = f.readlines()
         predicted_label = class_labels[prediction].strip()
         
