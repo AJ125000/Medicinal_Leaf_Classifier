@@ -1,4 +1,6 @@
 streamlit
 torch
+torhvision
 opencv-python-headless
 numpy
+pillow
