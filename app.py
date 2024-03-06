@@ -61,7 +61,7 @@ def predict_class(model, image, threshold):
     preprocessed_image = preprocess_image(image)
     
     class_labels = []
-    with open("pred_class\dataset_classes.txt", "r") as f:
+    with open("pred_class/dataset_classes.txt", "r") as f:
         class_labels = f.readlines()    
     # Make predictions
     probabilities = model(preprocessed_image).softmax(dim=1)  # Assuming model outputs probabilities
@@ -77,7 +77,7 @@ def predict_class(model, image, threshold):
 st.title("Medicinal Leaf Classification App")
 
 class_labels = []
-with open("pred_class\dataset_classes.txt", "r") as f:
+with open("pred_class/dataset_classes.txt", "r") as f:
         class_labels = f.readlines()
     
 display_labels(class_labels)
@@ -103,7 +103,7 @@ if uploaded_file is not None:
         
         # Download predicted class labels from a separate file (replace with your actual file)
         class_labels = []
-        with open("pred_class\dataset_classes.txt", "r") as f:
+        with open("pred_class/dataset_classes.txt", "r") as f:
             class_labels = f.readlines()
 
         predicted_label = prediction
