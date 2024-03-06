@@ -23,7 +23,7 @@ def load_model():
 #                 nn.Dropout(p=0.3),
                 nn.Linear(128, 50)
                 )
-    model.load_state_dict(torch.load("weights (1).h5", map_location=device))
+    model.load_state_dict(torch.load("weights1.h5", map_location=device))
     # Freeze the model weights (optional)
     for param in model.parameters():
         param.requires_grad = False
