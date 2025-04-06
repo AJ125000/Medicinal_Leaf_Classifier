@@ -1,5 +1,7 @@
 Link to the app: https://medicinalleafclassifier-4exsr8xydua8nuywfsx4ir.streamlit.app/
 
+Open the "medicinal-plant-leaf-classification (1).ipynb" file to see the code used for training the Resnet CNN using transfer learning
+
 # Medicinal_Leaf_Classifier
 
 This is an app that classifies a given medicinal plant leaf image into one among the following classes:
