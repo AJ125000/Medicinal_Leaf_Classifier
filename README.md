@@ -1,6 +1,6 @@
 Link to the app: https://medicinalleafclassifier-4exsr8xydua8nuywfsx4ir.streamlit.app/
 
-Open the "medicinal-plant-leaf-classification (1).ipynb" file to see the code used for training the Resnet CNN using transfer learning
+Open the "medicinal-plant-leaf-classification (1).ipynb" file to see the code used for training the Resnet CNN by fine-tuning it on a custom dataset
 
 # Medicinal_Leaf_Classifier
 
