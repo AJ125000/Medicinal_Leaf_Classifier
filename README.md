@@ -8,4 +8,4 @@ This is an app that classifies a given medicinal plant leaf image into one among
 
 Just upload an image into the app, it will classify it as one among the above classes.
 
-![{E7DAD5D0-AE32-4CD3-AF13-9B9AA5300EBB}](https://github.com/user-attachments/assets/dcf6fd55-19d2-4686-a6b2-6b45f5c43044)
+
